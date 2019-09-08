@@ -1,51 +1,51 @@
 import ExerciseType, { toExerciseType } from './ExerciseType';
 
 export default class Exercise {
-    public additional: String;
-    public altitude_gain: String;
-    public altitude_loss: String;
+    public additional: string;
+    public altitude_gain: string;
+    public altitude_loss: string;
     public calorie: Number;
-    public comment: String;
-    public count_type: String;
-    public count: String;
-    public custom: String;
-    public datauuid: String;
-    public deviceuuid: String;
+    public comment: string;
+    public count_type: string;
+    public count: string;
+    public custom: string;
+    public datauuid: string;
+    public deviceuuid: string;
 
-    public exercise_custom_type: String;
+    public exercise_custom_type: string;
     public exercise_type: Number;
     public type: ExerciseType;
 
     public decline_distance: Number;
     public incline_distance: Number;
-    public live_data: String;
-    public location_data: String;
+    public live_data: string;
+    public location_data: string;
 
-    public max_altitude: Number;
-    public max_cadence: Number;
-    public max_caloricburn_rate: Number;
-    public max_heart_rate: Number;
-    public max_power: Number;
-    public max_rpm: Number;
-    public max_speed: Number;
-    public mean_cadence: Number;
-    public mean_caloricburn_rate: Number;
-    public mean_heart_rate: Number;
-    public mean_power: Number;
-    public mean_rpm: Number;
-    public mean_speed: Number;
-    public min_altitude: Number;
-    public min_heart_rate: Number;
-    public pkg_name: String;
+    public max_altitude: number;
+    public max_cadence: number;
+    public max_caloricburn_rate: number;
+    public max_heart_rate: number;
+    public max_power: number;
+    public max_rpm: number;
+    public max_speed: number;
+    public mean_cadence: number;
+    public mean_caloricburn_rate: number;
+    public mean_heart_rate: number;
+    public mean_power: number;
+    public mean_rpm: number;
+    public mean_speed: number;
+    public min_altitude: number;
+    public min_heart_rate: number;
+    public pkg_name: string;
 
     public start_time: Date;
     public create_time: Date;
     public end_time: Date;
-    public time_offset: String;
+    public time_offset: string;
     public update_time: Date;
 
-    public distance: Number;
-    public duration: Number;
+    public distance: number;
+    public duration: number;
 
     constructor(data: any) {
         this.additional = data['additional'];
@@ -93,5 +93,11 @@ export default class Exercise {
         this.start_time = new Date(data['start_time']);
         this.update_time = new Date(data['update_time']);
         this.time_offset = data['time_offset'];
+    }
+
+    public getDuration(): string {
+        const seconds = ((this.duration / 1000) % 60).toFixed(0);
+        const minutes = ((this.duration / 1000 / 60) % 60).toFixed(0);
+        return `${minutes.padStart(2, '0')}:${seconds.padStart(2, '0')}`;
     }
 }

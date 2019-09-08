@@ -1,5 +1,6 @@
 enum ExerciseType {
     Unknown = 'Unknown',
+    Other = 'Other',
     Walking = 'Walking',
     Running = 'Running',
     Cycling = 'Cycling',
@@ -8,6 +9,8 @@ enum ExerciseType {
 
 export function toExerciseType(type: Number | String): ExerciseType {
     switch (Number(type)) {
+        case 0:
+            return ExerciseType.Other;
         case 1001:
             return ExerciseType.Walking;
         case 1002:
@@ -26,6 +29,8 @@ export function fromString(type: string): ExerciseType {
     switch (type) {
         case 'Unknown':
             return ExerciseType.Unknown;
+        case 'Other':
+            return ExerciseType.Other;
         case 'Walking':
             return ExerciseType.Walking;
         case 'Running':
