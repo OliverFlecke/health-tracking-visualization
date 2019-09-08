@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { ExerciseState } from './reducer/ExerciseReducer';
@@ -28,24 +28,24 @@ const ExerciseChart = (
     },
   };
 
+  const exerciseData = props.state.exercises.map(ex => ({
+    x: ex.start_time.getTime(),
+    y: Math.round(ex.duration / 1000),
+    pointWidth: 10,
+  }));
+
   options.series = [
     {
       type: 'column',
       name: 'data',
-      data: props.state.exercises.map(ex => ({
-        x: ex.start_time.getTime(),
-        y: Math.round(ex.duration / 1000),
-        pointWidth: 10,
-      })),
+      data: exerciseData,
       turboThreshold: 0,
       color: 'red',
     },
   ];
 
   return (
-    <div>
       <HighchartsReact highcharts={Highcharts} options={options} {...props} />
-    </div>
   );
 };
 

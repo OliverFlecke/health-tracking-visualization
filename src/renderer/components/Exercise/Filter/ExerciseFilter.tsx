@@ -1,15 +1,15 @@
-import React from 'react';
-import {
-  ExerciseReducerProps,
-  ExerciseActionType,
-} from '../reducer/ExerciseReducer';
+import React, { useContext } from 'react';
+import { ExerciseActionType } from '../reducer/ExerciseReducer';
 import ExerciseDatePicker from './ExerciseDatePicker';
 import ExerciseTypeDropdown from './ExerciseTypeDropdown';
+import { ExerciseContext } from '../Exercise';
 
-const ExerciseFilter = (props: ExerciseReducerProps) => {
-  const { allExercises, startDate, endDate } = props.state;
+const ExerciseFilter = () => {
+  const { state, dispatch } = useContext(ExerciseContext);
+  const { allExercises, startDate, endDate } = state;
 
-  const minDate = allExercises.length > 0 ? allExercises[0].start_time : new Date();
+  const minDate =
+    allExercises.length > 0 ? allExercises[0].start_time : new Date();
   const maxDate =
     allExercises.length > 0
       ? allExercises[allExercises.length - 1].start_time
@@ -17,7 +17,7 @@ const ExerciseFilter = (props: ExerciseReducerProps) => {
 
   return (
     <div>
-      <ExerciseTypeDropdown {...props} />
+      <ExerciseTypeDropdown />
 
       <div
         style={{
@@ -32,7 +32,7 @@ const ExerciseFilter = (props: ExerciseReducerProps) => {
             maxDate={maxDate}
             selectedDate={startDate}
             setDate={(date: Date) =>
-              props.dispatch({
+              dispatch({
                 type: ExerciseActionType.SetStartDate,
                 payload: date,
               })
@@ -46,7 +46,7 @@ const ExerciseFilter = (props: ExerciseReducerProps) => {
             maxDate={maxDate}
             selectedDate={endDate}
             setDate={(date: Date) =>
-              props.dispatch({
+              dispatch({
                 type: ExerciseActionType.SetEndDate,
                 payload: date,
               })

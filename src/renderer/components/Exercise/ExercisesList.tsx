@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ExerciseRow from './ExerciseRow';
-import ExerciseData from '../../models/ExerciseData';
 import { Link } from '@reach/router';
+import { ExerciseContext } from './Exercise';
 
-const ExercisesList = (props: { exercises: ExerciseData[] }) => {
+const ExercisesList = () => {
+  const { state } = useContext(ExerciseContext);
+
   return (
     <>
-      {props.exercises
+      {state.exercises
         .map((exercise, index) => (
           <Link key={index} to={exercise.datauuid}>
             <ExerciseRow exercise={exercise} />

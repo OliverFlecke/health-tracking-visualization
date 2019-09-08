@@ -6,9 +6,16 @@ import {
   reducer,
   initialState,
   ExerciseActionType,
+  ExerciseState,
+  ExerciseAction,
 } from './reducer/ExerciseReducer';
 import readExerciseData from '../../readers/readExerciseData';
 import ExerciseData from '../../models/ExerciseData';
+
+export const ExerciseContext = React.createContext<{
+  state: ExerciseState;
+  dispatch: React.Dispatch<ExerciseAction>;
+}>({ state: initialState, dispatch: () => {} });
 
 const Exercise = () => {
   console.log('Render');
@@ -25,10 +32,12 @@ const Exercise = () => {
       <Link to="./">
         <h1 style={{ color: 'black', textDecoration: 'none' }}>Exercises</h1>
       </Link>
-      <Router>
-        <ExerciseOverview path="/" state={state} dispatch={dispatch} />
-        <ExerciseDetails path="/:exerciseId" state={state} />
-      </Router>
+      <ExerciseContext.Provider value={{ state, dispatch }}>
+        <Router>
+          <ExerciseOverview path="/" />
+          <ExerciseDetails path="/:exerciseId" state={state} />
+        </Router>
+      </ExerciseContext.Provider>
     </>
   );
 };

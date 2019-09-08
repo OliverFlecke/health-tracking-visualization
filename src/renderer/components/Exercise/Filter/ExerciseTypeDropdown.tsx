@@ -1,19 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import ExerciseType, { fromString } from '../../../models/ExerciseType';
-import {
-  ExerciseReducerProps,
-  ExerciseActionType,
-} from '../reducer/ExerciseReducer';
+import { ExerciseActionType } from '../reducer/ExerciseReducer';
+import { ExerciseContext } from '../Exercise';
 
-const ExerciseTypeDropdown = (props: ExerciseReducerProps) => {
+const ExerciseTypeDropdown = () => {
+  const { state, dispatch } = useContext(ExerciseContext);
+
   return (
     <Dropdown>
-      <Dropdown.Toggle id="exercise-filter">Filter exercises</Dropdown.Toggle>
+      <Dropdown.Toggle id="exercise-filter">
+        {state.filter ? `Show ${state.filter}` : 'Show all'}
+      </Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item
           onSelect={() =>
-            props.dispatch({
+            dispatch({
               type: ExerciseActionType.RemoveFilter,
             })
           }
@@ -24,7 +26,7 @@ const ExerciseTypeDropdown = (props: ExerciseReducerProps) => {
           <Dropdown.Item
             key={type}
             onSelect={() =>
-              props.dispatch({
+              dispatch({
                 type: ExerciseActionType.SetFilter,
                 payload: fromString(type),
               })
