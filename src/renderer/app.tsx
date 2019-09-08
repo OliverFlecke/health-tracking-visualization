@@ -10,6 +10,13 @@ import store from './store';
 const mainElement = document.createElement('div');
 document.body.appendChild(mainElement);
 
+const bootstrapStyles = document.createElement('link');
+bootstrapStyles.rel="stylesheet";
+bootstrapStyles.href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css";
+bootstrapStyles.integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T";
+bootstrapStyles.crossOrigin="anonymous";
+document.head.appendChild(bootstrapStyles);
+
 // Render components
 const render = (Component: () => JSX.Element) => {
     ReactDOM.render(
