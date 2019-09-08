@@ -1,32 +1,36 @@
 import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import Exercise from '../../models/Exercise';
+import { ExerciseState } from './reducer/ExerciseReducer';
 
 const baseOptions: Highcharts.Options = {
   title: {
-    text: 'Exercises'
+    text: 'Exercises',
   },
   xAxis: {
-    type: 'datetime'
-  }
+    type: 'datetime',
+  },
+  legend: {
+    enabled: false,
+  },
+  credits: {
+    enabled: false,
+  },
 };
 
-interface ExerciseChartProps {
-  exercises: Exercise[];
-}
-
-const ExerciseChart = (props: HighchartsReact.Props & ExerciseChartProps) => {
+const ExerciseChart = (
+  props: HighchartsReact.Props & { state: ExerciseState },
+) => {
   const options: Highcharts.Options = baseOptions;
   options.series = [
     {
       type: 'column',
-      data: props.exercises.map(ex => ({
+      data: props.state.exercises.map(ex => ({
         x: ex.start_time.getTime(),
-        y: ex.duration
+        y: ex.duration,
       })),
-      turboThreshold: 0
-    }
+      turboThreshold: 0,
+    },
   ];
 
   return (
