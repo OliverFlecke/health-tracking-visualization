@@ -34,7 +34,7 @@ const ExerciseChart = (
       name: 'data',
       data: props.state.exercises.map(ex => ({
         x: ex.start_time.getTime(),
-        y: ex.duration,
+        y: Math.round(ex.duration / 1000),
         pointWidth: 10,
       })),
       turboThreshold: 0,
