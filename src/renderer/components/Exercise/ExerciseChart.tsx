@@ -22,14 +22,23 @@ const ExerciseChart = (
   props: HighchartsReact.Props & { state: ExerciseState },
 ) => {
   const options: Highcharts.Options = baseOptions;
+  options.yAxis = {
+    title: {
+      text: 'Duration',
+    },
+  };
+
   options.series = [
     {
       type: 'column',
+      name: 'data',
       data: props.state.exercises.map(ex => ({
         x: ex.start_time.getTime(),
         y: ex.duration,
+        pointWidth: 10,
       })),
       turboThreshold: 0,
+      color: 'red',
     },
   ];
 

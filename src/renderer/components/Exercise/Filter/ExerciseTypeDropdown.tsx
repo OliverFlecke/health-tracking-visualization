@@ -1,10 +1,10 @@
 import React from 'react';
 import { Dropdown } from 'react-bootstrap';
-import ExerciseType, { fromString } from '../../models/ExerciseType';
+import ExerciseType, { fromString } from '../../../models/ExerciseType';
 import {
   ExerciseReducerProps,
   ExerciseActionType,
-} from './reducer/ExerciseReducer';
+} from '../reducer/ExerciseReducer';
 
 const ExerciseTypeDropdown = (props: ExerciseReducerProps) => {
   return (

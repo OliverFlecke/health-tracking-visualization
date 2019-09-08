@@ -2,7 +2,7 @@ import React from 'react';
 import {
   ExerciseReducerProps,
   ExerciseActionType,
-} from './reducer/ExerciseReducer';
+} from '../reducer/ExerciseReducer';
 import ExerciseDatePicker from './ExerciseDatePicker';
 import ExerciseTypeDropdown from './ExerciseTypeDropdown';
 

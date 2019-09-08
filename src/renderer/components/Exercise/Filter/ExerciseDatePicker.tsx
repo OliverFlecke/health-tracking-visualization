@@ -4,7 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import {
   ExerciseReducerProps,
   ExerciseActionType,
-} from './reducer/ExerciseReducer';
+} from '../reducer/ExerciseReducer';
 
 const ExerciseDatePicker = (props: {
   minDate: Date;

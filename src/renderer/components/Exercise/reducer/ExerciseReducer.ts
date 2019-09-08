@@ -1,4 +1,4 @@
-import Exercise from '../../../models/Exercise';
+import ExerciseData from '../../../models/ExerciseData';
 import ExerciseType from '../../../models/ExerciseType';
 
 export interface ExerciseReducerProps {
@@ -10,8 +10,8 @@ export interface ExerciseState {
   startDate?: Date;
   endDate: Date;
   filter?: ExerciseType;
-  exercises: Exercise[];
-  allExercises: Exercise[];
+  exercises: ExerciseData[];
+  allExercises: ExerciseData[];
 }
 
 export interface ExerciseAction {
@@ -28,7 +28,7 @@ export enum ExerciseActionType {
 }
 
 export const initialState: ExerciseState = {
-  startDate: undefined,
+  startDate: new Date(2019, 8, 1),
   endDate: new Date(),
   filter: undefined,
   exercises: [],
@@ -46,7 +46,7 @@ export function reducer(state: ExerciseState, action: ExerciseAction) {
     case ExerciseActionType.RemoveFilter:
       return filter({ ...state, filter: undefined });
     case ExerciseActionType.SetExercises:
-      return filter({ ...state, allExercises: action.payload as Exercise[] });
+      return filter({ ...state, allExercises: action.payload as ExerciseData[] });
 
     default:
       return state;

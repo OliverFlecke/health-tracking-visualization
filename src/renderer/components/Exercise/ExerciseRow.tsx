@@ -1,8 +1,8 @@
 import React from "react";
 import ExerciseType from "../../models/ExerciseType";
-import Exercise from "../../models/Exercise";
+import ExerciseData from "../../models/ExerciseData";
 
-const ExerciseOverview = (props: { exercise: Exercise }) => {
+const ExerciseRow = (props: { exercise: ExerciseData }) => {
   const { exercise } = props;
 
   return (
@@ -13,7 +13,7 @@ const ExerciseOverview = (props: { exercise: Exercise }) => {
         width: '100%'
       }}
     >
-      <div>{exercise.start_time.toDateString()}</div>
+      <div>{exercise.start_time.toLocaleString()}</div>
       <div style={{ textAlign: 'right', marginRight: 10 }}>
         {exercise.distance.toFixed(0)} m
       </div>
@@ -34,4 +34,4 @@ const ExerciseOverview = (props: { exercise: Exercise }) => {
   );
 };
 
-export default ExerciseOverview;
+export default ExerciseRow;

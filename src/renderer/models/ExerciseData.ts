@@ -1,6 +1,6 @@
 import ExerciseType, { toExerciseType } from './ExerciseType';
 
-export default class Exercise {
+export default class ExerciseData {
     public additional: string;
     public altitude_gain: string;
     public altitude_loss: string;
@@ -99,5 +99,9 @@ export default class Exercise {
         const seconds = ((this.duration / 1000) % 60).toFixed(0);
         const minutes = ((this.duration / 1000 / 60) % 60).toFixed(0);
         return `${minutes.padStart(2, '0')}:${seconds.padStart(2, '0')}`;
+    }
+
+    public meanSpeedKmps(): number {
+        return this.mean_speed * 3.6;
     }
 }

@@ -1,9 +1,9 @@
 import { hot } from 'react-hot-loader/root';
 import React from 'react';
-import Exercises from './Exercises/Exercises';
+import Exercise from './Exercise/Exercise';
 
 const Application = () => {
-  return <Exercises />;
+  return <Exercise />;
 };
 
 export default hot(Application);

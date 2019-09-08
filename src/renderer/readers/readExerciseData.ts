@@ -1,13 +1,13 @@
-import Exercise from '../models/Exercise';
+import ExerciseData from '../models/ExerciseData';
 import { parseString } from 'fast-csv/build/src/parser';
 import fs from 'fs';
 
 export default function readExerciseData(
   filename: string,
-  setExercises: (exercises: Exercise[]) => void
+  setExercises: (exercises: ExerciseData[]) => void
 ) {
   fs.readFile(filename, 'utf-8', (err, data) => {
-    let readExercises: Exercise[] = [];
+    let readExercises: ExerciseData[] = [];
     const text = data
       .split('\n')
       .splice(1)
@@ -15,7 +15,7 @@ export default function readExerciseData(
     parseString(text, {
       headers: true
     })
-      .on('data', (row: any) => readExercises.push(new Exercise(row)))
+      .on('data', (row: any) => readExercises.push(new ExerciseData(row)))
       .on('end', () =>
         setExercises(
           readExercises.sort(
