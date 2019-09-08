@@ -17,6 +17,8 @@ bootstrapStyles.integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOh
 bootstrapStyles.crossOrigin="anonymous";
 document.head.appendChild(bootstrapStyles);
 
+document.title = 'Health tracking';
+
 // Render components
 const render = (Component: () => JSX.Element) => {
     ReactDOM.render(

@@ -53,14 +53,15 @@ const ExerciseOverview = (props: { exercise: Exercise }) => {
     return (
         <div
             style={{
-                display: 'flex',
-                justifyContent: 'space-evenly',
-                flexDirection: 'row',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
                 width: '100%'
             }}
         >
             <div>{exercise.start_time.toDateString()}</div>
-            <div>{exercise.distance}</div>
+            <div style={{ textAlign: 'right', marginRight: 10 }}>
+                {exercise.distance.toFixed(0)} m
+            </div>
             <div>
                 {exercise.type == ExerciseType.Unknown ? exercise.exercise_type : exercise.type}
             </div>
