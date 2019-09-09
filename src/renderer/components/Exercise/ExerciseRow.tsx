@@ -1,6 +1,6 @@
-import React from "react";
-import ExerciseType from "../../models/ExerciseType";
-import ExerciseData from "../../models/ExerciseData";
+import React from 'react';
+import ExerciseType from '../../models/ExerciseType';
+import ExerciseData from '../../models/ExerciseData';
 
 const ExerciseRow = (props: { exercise: ExerciseData }) => {
   const { exercise } = props;
@@ -10,7 +10,7 @@ const ExerciseRow = (props: { exercise: ExerciseData }) => {
       style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(4, 1fr)',
-        width: '100%'
+        width: '100%',
       }}
     >
       <div>{exercise.start_time.toLocaleString()}</div>
@@ -20,7 +20,7 @@ const ExerciseRow = (props: { exercise: ExerciseData }) => {
       <div
         style={{
           textAlign: 'right',
-          marginRight: 10
+          marginRight: 10,
         }}
       >
         {exercise.getDuration()}

@@ -1,24 +1,26 @@
 import { RouteComponentProps } from '@reach/router';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
 import readLiveData from '../../../readers/readLiveData';
-import { ExerciseState } from '../reducer/ExerciseReducer';
 import ExerciseDetailsChart, { DataOption } from './LiveDataChart';
+import { ExerciseContext } from '../Exercise';
 
 interface Props {
   exerciseId?: string;
-  state: ExerciseState;
 }
 
 const ExerciseDetails: React.SFC<Props & RouteComponentProps> = props => {
-  const exercise = props.state.allExercises.find(
+  if (!props.exerciseId) return null;
+
+  const { state } = useContext(ExerciseContext);
+  const exercise = state.allExercises.find(
     ex => props.exerciseId === ex.datauuid,
   );
   if (!exercise) return null;
   console.log(exercise);
 
   const [data, setData] = useState([]);
-  useEffect(() => readLiveData(exercise.live_data, setData), []);
+  useEffect(() => readLiveData(exercise.liveData, setData), []);
 
   return (
     <>
@@ -30,8 +32,8 @@ const ExerciseDetails: React.SFC<Props & RouteComponentProps> = props => {
           justifyContent: 'space-between',
         }}
       >
-        <div>Start time: {exercise.start_time.toLocaleString()}</div>
-        <div>End time: {exercise.end_time.toLocaleString()}</div>
+        <div>Start time: {exercise.startTime.toLocaleString()}</div>
+        <div>End time: {exercise.endTime.toLocaleString()}</div>
       </div>
       <div
         style={{
@@ -44,15 +46,11 @@ const ExerciseDetails: React.SFC<Props & RouteComponentProps> = props => {
         <div>Duration: {exercise.getDuration()}</div>
       </div>
       <div>
-        Speed: {exercise.mean_speed} m/s - {exercise.meanSpeedKmps()} km/h
+        Speed: {exercise.meanSpeed} m/s - {exercise.meanSpeedKmps()} km/h
       </div>
       <ExerciseDetailsChart data={data} dataToDisplay={DataOption.Speed} />
     </>
   );
-};
-
-ExerciseDetails.defaultProps = {
-  exerciseId: '',
 };
 
 export default ExerciseDetails;

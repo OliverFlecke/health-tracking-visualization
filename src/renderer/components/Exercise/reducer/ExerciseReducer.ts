@@ -46,7 +46,10 @@ export function reducer(state: ExerciseState, action: ExerciseAction) {
     case ExerciseActionType.RemoveFilter:
       return filter({ ...state, filter: undefined });
     case ExerciseActionType.SetExercises:
-      return filter({ ...state, allExercises: action.payload as ExerciseData[] });
+      return filter({
+        ...state,
+        allExercises: action.payload as ExerciseData[],
+      });
 
     default:
       return state;

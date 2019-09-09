@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { ExerciseState } from './reducer/ExerciseReducer';
@@ -45,7 +45,7 @@ const ExerciseChart = (
   ];
 
   return (
-      <HighchartsReact highcharts={Highcharts} options={options} {...props} />
+    <HighchartsReact highcharts={Highcharts} options={options} {...props} />
   );
 };
 

@@ -22,7 +22,7 @@ const ExerciseTypeDropdown = () => {
         >
           All
         </Dropdown.Item>
-        {Object.keys(ExerciseType).map((type: string, i) => (
+        {Object.keys(ExerciseType).map((type: string) => (
           <Dropdown.Item
             key={type}
             onSelect={() =>

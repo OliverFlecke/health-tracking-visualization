@@ -10,7 +10,7 @@ export default function readExerciseData(
   if (!filename) return;
 
   fs.readFile(`data/${filename}`, 'utf-8', (err, data) => {
-    let readExercises: ExerciseData[] = [];
+    const readExercises: ExerciseData[] = [];
     const text = data
       .split('\n')
       .splice(1)
@@ -22,7 +22,7 @@ export default function readExerciseData(
       .on('end', () =>
         setExercises(
           readExercises.sort(
-            (a, b) => a.start_time.getTime() - b.start_time.getTime(),
+            (a, b) => a.startTime.getTime() - b.startTime.getTime(),
           ),
         ),
       );

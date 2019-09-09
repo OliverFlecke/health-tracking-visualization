@@ -1,11 +1,10 @@
-import React, { useEffect, useReducer, useContext } from 'react';
+import React, { useContext } from 'react';
 import ExerciseChart from './ExerciseChart';
 import ExercisesFilter from './Filter/ExerciseFilter';
 import ExercisesList from './ExercisesList';
-import { RouteComponentProps } from '@reach/router';
 import { ExerciseContext } from './Exercise';
 
-const ExerciseOverview = (props: RouteComponentProps) => {
+const ExerciseOverview = () => {
   const { state } = useContext(ExerciseContext);
 
   return (
