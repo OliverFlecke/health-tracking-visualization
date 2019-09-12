@@ -1,7 +1,7 @@
 import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import { ExerciseState } from './reducer/ExerciseReducer';
+import { ExerciseState } from './ExerciseReducer';
 
 const baseOptions: Highcharts.Options = {
   title: {

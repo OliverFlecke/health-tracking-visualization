@@ -1,15 +1,21 @@
 import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import Exercise from './Exercise/Exercise';
-import { Router } from '@reach/router';
+import { Router, Link } from '@reach/router';
 import Sleep from './Sleep/Sleep';
 
 const Application = () => {
   return (
-    <Router>
-      <Exercise path="/exercise" />
-      <Sleep path="/" />
-    </Router>
+    <>
+      <nav>
+        <Link to="/exercise">Exercise</Link>
+        <Link to="/sleep">Sleep</Link>
+      </nav>
+      <Router>
+        <Exercise path="/exercise/*" />
+        <Sleep path="/sleep/*" />
+      </Router>
+    </>
   );
 };
 

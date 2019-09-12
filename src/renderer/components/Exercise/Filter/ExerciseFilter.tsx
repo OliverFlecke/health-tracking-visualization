@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ExerciseActionType } from '../reducer/ExerciseReducer';
+import { ExerciseActionType } from '../ExerciseReducer';
 import ExerciseDatePicker from './ExerciseDatePicker';
 import ExerciseTypeDropdown from './ExerciseTypeDropdown';
 import { ExerciseContext } from '../Exercise';

@@ -11,7 +11,7 @@ import {
   ExerciseState,
   initialState,
   reducer,
-} from './reducer/ExerciseReducer';
+} from './ExerciseReducer';
 
 export const ExerciseContext = React.createContext<{
   state: ExerciseState;
@@ -19,7 +19,6 @@ export const ExerciseContext = React.createContext<{
 }>({ state: initialState, dispatch: () => {} });
 
 const Exercise: React.SFC<RouteComponentProps> = () => {
-  console.log('Render');
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
@@ -30,13 +29,13 @@ const Exercise: React.SFC<RouteComponentProps> = () => {
 
   return (
     <>
-      <Link to="./">
+      <Link to="exercise">
         <h1 style={{ color: 'black', textDecoration: 'none' }}>Exercises</h1>
       </Link>
       <ExerciseContext.Provider value={{ state, dispatch }}>
         <Router>
           <ExerciseOverview path="/" />
-          <ExerciseDetails path="/:exerciseId" />
+          <ExerciseDetails path=":exerciseId" />
         </Router>
       </ExerciseContext.Provider>
     </>

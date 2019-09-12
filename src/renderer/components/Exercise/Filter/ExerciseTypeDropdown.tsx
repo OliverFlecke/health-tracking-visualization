@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import ExerciseType, { fromString } from '../../../models/ExerciseType';
-import { ExerciseActionType } from '../reducer/ExerciseReducer';
+import { ExerciseActionType } from '../ExerciseReducer';
 import { ExerciseContext } from '../Exercise';
 
 const ExerciseTypeDropdown = () => {

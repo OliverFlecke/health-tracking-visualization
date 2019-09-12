@@ -1,10 +1,5 @@
-import ExerciseData from '../../../models/ExerciseData';
-import ExerciseType from '../../../models/ExerciseType';
-
-export interface ExerciseReducerProps {
-  state: ExerciseState;
-  dispatch: React.Dispatch<ExerciseAction>;
-}
+import ExerciseData from '../../models/ExerciseData';
+import ExerciseType from '../../models/ExerciseType';
 
 export interface ExerciseState {
   startDate?: Date;

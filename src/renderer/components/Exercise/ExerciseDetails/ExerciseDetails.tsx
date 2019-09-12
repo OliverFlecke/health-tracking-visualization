@@ -17,7 +17,6 @@ const ExerciseDetails: React.SFC<Props & RouteComponentProps> = props => {
     ex => props.exerciseId === ex.datauuid,
   );
   if (!exercise) return null;
-  console.log(exercise);
 
   const [data, setData] = useState([]);
   useEffect(() => readLiveData(exercise.liveData, setData), []);

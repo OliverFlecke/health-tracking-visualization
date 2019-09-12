@@ -1,9 +1,13 @@
 import React from 'react';
 import ExerciseType from '../../models/ExerciseType';
 import ExerciseData from '../../models/ExerciseData';
+import RowProps from '../List/Row';
 
-const ExerciseRow = (props: { exercise: ExerciseData }) => {
-  const { exercise } = props;
+const ExerciseRow: React.FunctionComponent<RowProps> = (props: {
+  data?: ExerciseData;
+}) => {
+  if (!props.data) return null;
+  const { data } = props;
 
   return (
     <div
@@ -13,9 +17,9 @@ const ExerciseRow = (props: { exercise: ExerciseData }) => {
         width: '100%',
       }}
     >
-      <div>{exercise.startTime.toLocaleString()}</div>
+      <div>{data.startTime.toLocaleString()}</div>
       <div style={{ textAlign: 'right', marginRight: 10 }}>
-        {exercise.distance.toFixed(0)} m
+        {data.distance.toFixed(0)} m
       </div>
       <div
         style={{
@@ -23,12 +27,10 @@ const ExerciseRow = (props: { exercise: ExerciseData }) => {
           marginRight: 10,
         }}
       >
-        {exercise.getDuration()}
+        {data.getDuration()}
       </div>
       <div>
-        {exercise.type == ExerciseType.Unknown
-          ? exercise.exerciseType
-          : exercise.type}
+        {data.type == ExerciseType.Unknown ? data.exerciseType : data.type}
       </div>
     </div>
   );
