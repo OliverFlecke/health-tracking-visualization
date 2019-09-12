@@ -3,8 +3,9 @@ import ExerciseChart from './ExerciseChart';
 import ExercisesFilter from './Filter/ExerciseFilter';
 import ExercisesList from './ExercisesList';
 import { ExerciseContext } from './Exercise';
+import { RouteComponentProps } from '@reach/router';
 
-const ExerciseOverview = () => {
+const ExerciseOverview: React.SFC<RouteComponentProps> = () => {
   const { state } = useContext(ExerciseContext);
 
   return (

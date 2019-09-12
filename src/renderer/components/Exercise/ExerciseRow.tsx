@@ -13,7 +13,7 @@ const ExerciseRow = (props: { exercise: ExerciseData }) => {
         width: '100%',
       }}
     >
-      <div>{exercise.start_time.toLocaleString()}</div>
+      <div>{exercise.startTime.toLocaleString()}</div>
       <div style={{ textAlign: 'right', marginRight: 10 }}>
         {exercise.distance.toFixed(0)} m
       </div>
@@ -27,7 +27,7 @@ const ExerciseRow = (props: { exercise: ExerciseData }) => {
       </div>
       <div>
         {exercise.type == ExerciseType.Unknown
-          ? exercise.exercise_type
+          ? exercise.exerciseType
           : exercise.type}
       </div>
     </div>

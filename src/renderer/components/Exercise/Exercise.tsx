@@ -1,23 +1,24 @@
-import React, { useReducer, useEffect } from 'react';
-import { Link, Router } from '@reach/router';
-import ExerciseOverview from './ExerciseOverview';
+import { Link, RouteComponentProps, Router } from '@reach/router';
+import React, { useEffect, useReducer } from 'react';
+
+import ExerciseData from '../../models/ExerciseData';
+import readExerciseData from '../../readers/readExerciseData';
 import ExerciseDetails from './ExerciseDetails/ExerciseDetails';
+import ExerciseOverview from './ExerciseOverview';
 import {
-  reducer,
-  initialState,
+  ExerciseAction,
   ExerciseActionType,
   ExerciseState,
-  ExerciseAction,
+  initialState,
+  reducer,
 } from './reducer/ExerciseReducer';
-import readExerciseData from '../../readers/readExerciseData';
-import ExerciseData from '../../models/ExerciseData';
 
 export const ExerciseContext = React.createContext<{
   state: ExerciseState;
   dispatch: React.Dispatch<ExerciseAction>;
 }>({ state: initialState, dispatch: () => {} });
 
-const Exercise = () => {
+const Exercise: React.SFC<RouteComponentProps> = () => {
   console.log('Render');
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -35,7 +36,7 @@ const Exercise = () => {
       <ExerciseContext.Provider value={{ state, dispatch }}>
         <Router>
           <ExerciseOverview path="/" />
-          <ExerciseDetails path="/:exerciseId" state={state} />
+          <ExerciseDetails path="/:exerciseId" />
         </Router>
       </ExerciseContext.Provider>
     </>

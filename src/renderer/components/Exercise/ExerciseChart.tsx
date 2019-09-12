@@ -29,7 +29,7 @@ const ExerciseChart = (
   };
 
   const exerciseData = props.state.exercises.map(ex => ({
-    x: ex.start_time.getTime(),
+    x: ex.startTime.getTime(),
     y: Math.round(ex.duration / 1000),
     pointWidth: 10,
   }));

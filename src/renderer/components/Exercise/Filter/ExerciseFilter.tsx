@@ -9,10 +9,10 @@ const ExerciseFilter = () => {
   const { allExercises, startDate, endDate } = state;
 
   const minDate =
-    allExercises.length > 0 ? allExercises[0].start_time : new Date();
+    allExercises.length > 0 ? allExercises[0].startTime : new Date();
   const maxDate =
     allExercises.length > 0
-      ? allExercises[allExercises.length - 1].start_time
+      ? allExercises[allExercises.length - 1].startTime
       : new Date();
 
   return (

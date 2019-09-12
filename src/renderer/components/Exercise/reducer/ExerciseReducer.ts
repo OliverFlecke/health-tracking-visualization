@@ -64,8 +64,8 @@ function filter(state: ExerciseState): ExerciseState {
     exercises: state.allExercises.filter(
       e =>
         (!filter || e.type == filter) &&
-        (!startDate || e.start_time > startDate) &&
-        e.start_time < endDate,
+        (!startDate || e.startTime > startDate) &&
+        e.startTime < endDate,
     ),
   };
 }
